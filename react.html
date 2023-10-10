@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Timer check</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+  <h2>Kelifa speed check </h2>
+  <div id="target">Your time: <span id="target-time">0 ms</span> </div>
+  <div id="counter">Count: <span id="counter-time">0 ms</span> </div>
+
+  <button onclick="startTimer()">Start Timer</button>
+  <button onclick="recordTime()">React</button>
+
+  <script>
+      var reactTime = undefined;
+
+      function recordTime() {
+          reactTime = Date.now();
+          console.log(reactTime);
+      }
+
+      function startTimer() {
+          setTimeout(function () {
+              var targetTime = Date.now();
+              var reactionTime = reactTime !== undefined ? reactTime - targetTime : "N/A";
+              document.getElementById("target-time").textContent = targetTime + " ms";
+              document.getElementById("counter-time").textContent = reactionTime + " ms";
+          }, Math.random() * 5000 + 1000); 
+      }
+
+</script>
+</body>
+</html>
