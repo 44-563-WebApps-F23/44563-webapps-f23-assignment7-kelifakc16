@@ -124,7 +124,7 @@
         </div>
 
     </div>
-   
+
     <script>
         var ids = [
             "location0", "location1", "location2", "location3", "location4", "location5", "location6", "location7", "location8", "location9", "location10", "location11",
@@ -134,8 +134,13 @@
         var checkCount = 0;
         var penalty = 0;
         var lastCheck = 0;
-        var treasureLocation = 5;
-        var trapLocation = 18;
+
+        var trapLocation = Math.floor(Math.random() * 25);
+        var treasureLocation;
+        do {
+            treasureLocation = Math.floor(Math.random() * 25);
+        } while (treasureLocation === trapLocation);
+
         var gameOver = false;
         function check(position) {
             if (gameOver) {
@@ -198,21 +203,21 @@
 
         var trapLocation, treasureLocation;
 
-function resetGame() {
-    checkCount = 0;
-    penalty = 0;
-    lastCheck = 0;
-    gameOver = false;
+        function resetGame() {
+            checkCount = 0;
+            penalty = 0;
+            lastCheck = 0;
+            gameOver = false;
 
-    trapLocation = Math.floor(Math.random() * 25);
-    treasureLocation = Math.floor(Math.random() * 25);
-    while (trapLocation === treasureLocation) {
-        treasureLocation = Math.floor(Math.random() * 25);
-    }
-    document.getElementById("locations").textContent = "Locations Checked: 0";
-    document.getElementById("penalty").textContent = "Penalty: 0";
-    document.getElementById("help").textContent = "";
-}
+            trapLocation = Math.floor(Math.random() * 25);
+            treasureLocation = Math.floor(Math.random() * 25);
+            while (trapLocation === treasureLocation) {
+                treasureLocation = Math.floor(Math.random() * 25);
+            }
+            document.getElementById("locations").textContent = "Locations Checked: 0";
+            document.getElementById("penalty").textContent = "Penalty: 0";
+            document.getElementById("help").textContent = "";
+        }
 
     </script>
 
