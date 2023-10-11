@@ -2,7 +2,6 @@
 <html>
 
 <head>
-	<title>Merger</title>
     <style>
         .flex-container {
             display: flex;
@@ -29,7 +28,6 @@
 </head>
 
 <body>
-	<h1>Kelifa builds a merger</h1>
     <div class="flex-container" id="target">
         <div class="merger">row item 1</div>
         <div class="merger">row item 2</div>
@@ -40,6 +38,7 @@
     <button onclick="addEnd()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="remove()">Remove</button>
+    <button onclick="swapElements()">Swap</button>
 
     <script>
         function addEnd() {
@@ -69,6 +68,24 @@
             if (length > 0) {
                 let indexToRemove = Math.floor(length / 2);
                 mergerItems[indexToRemove].remove();
+            }
+        }
+        function swapElements() {
+            let mergerItems = document.getElementsByClassName("merger");
+            let length = mergerItems.length;
+
+            if (length >= 2) {
+                let index1 = Math.floor(Math.random() * length);
+                let index2 = Math.floor(Math.random() * length);
+
+                // Ensure distinct indices
+                while (index2 === index1) {
+                    index2 = Math.floor(Math.random() * length);
+                }
+
+                let temp = mergerItems[index1].cloneNode(true);
+                mergerItems[index1].replaceWith(mergerItems[index2].cloneNode(true));
+                mergerItems[index2].replaceWith(temp);
             }
         }
     </script>

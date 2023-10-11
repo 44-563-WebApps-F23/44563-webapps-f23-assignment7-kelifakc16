@@ -34,6 +34,7 @@
         <p id="penalty" style="font-size: 16px; font-weight: bold;">Penalty is zero.</p>
         <p class="btn btn-primary" id="help-button">Click for help.</p>
         <p id="help" style="font-size: 16px; font-weight: bold;">Help report</p>
+        <button onclick="resetGame()" class="mb-3">New Game</button>
     </div>
     <div class="container d-flex justify-content-center">
         <div class="row">
@@ -123,6 +124,7 @@
         </div>
 
     </div>
+   
     <script>
         var ids = [
             "location0", "location1", "location2", "location3", "location4", "location5", "location6", "location7", "location8", "location9", "location10", "location11",
@@ -193,6 +195,25 @@
             ids.push("location" + i);
         }
         document.getElementById("help-button").addEventListener("click", help);
+
+        var trapLocation, treasureLocation;
+
+function resetGame() {
+    checkCount = 0;
+    penalty = 0;
+    lastCheck = 0;
+    gameOver = false;
+
+    trapLocation = Math.floor(Math.random() * 25);
+    treasureLocation = Math.floor(Math.random() * 25);
+    while (trapLocation === treasureLocation) {
+        treasureLocation = Math.floor(Math.random() * 25);
+    }
+    document.getElementById("locations").textContent = "Locations Checked: 0";
+    document.getElementById("penalty").textContent = "Penalty: 0";
+    document.getElementById("help").textContent = "";
+}
+
     </script>
 
 
